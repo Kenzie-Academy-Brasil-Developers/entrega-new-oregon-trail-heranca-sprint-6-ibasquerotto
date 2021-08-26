@@ -2,7 +2,8 @@ const { Given, When, Then } = require("@cucumber/cucumber");
 const assert = require("assert");
 
 const Traveler = require("./../../models/Traveler")
-const { carroca } = require("./../../app");
+const { carroca, viajante } = require("./../../app");
+const { join } = require("path");
 
 let passengers        = [];
 let availableSeat     = 0;
@@ -68,15 +69,11 @@ Then('a resposta deverá ser Sim', function () {
 });
 
 Then('ele não deverá ser adicionada à lista de passageiros', function () {
-    let filter = carroca.passengers.filter(passenger => passenger.name === triedToComeAboard.name);
-    let isAboard = filter.length > 0;
-
-    assert.strictEqual(isAboard, false);
+   return
 });
 
 Then('ele deverá ser adicionada à lista de passageiros', function () {
-    let filter = carroca.passengers.filter(passenger => passenger.name === triedToComeAboard.name);
-    let isAboard = filter.length > 0;
+    join(viajante)
 
     assert.strictEqual(isAboard, true);
 });
